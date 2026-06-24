@@ -291,10 +291,10 @@ cmake --build .
 # Linux / macOS
 g++ -std=c++17 -O2 -o netcheck src/main.cpp
 
-# Windows — MinGW
+# Windows MinGW
 g++ -std=c++17 -O2 -o netcheck.exe src/main.cpp -lws2_32 -liphlpapi
 
-# Windows — MSVC (Developer Command Prompt)
+# Windows MSVC (Developer Command Prompt)
 cl /std:c++17 /O2 /EHsc src/main.cpp ws2_32.lib iphlpapi.lib
 ```
 </details>
@@ -307,13 +307,13 @@ cl /std:c++17 /O2 /EHsc src/main.cpp ws2_32.lib iphlpapi.lib
 NetworkChecker/
 │
 ├── src/
-│   └── main.cpp            C++ source — single file, all platforms (~900 lines)
+│   └── main.cpp            C++ source single file, all platforms (~900 lines)
 │
 ├── python/
-│   └── netcheck.py         Python 3.8+ fallback — identical features, no build needed
+│   └── netcheck.py         Python 3.8+ fallback  identical features, no build needed
 │
-├── CMakeLists.txt          CMake build — cross-platform
-├── Makefile                Quick build — Linux / macOS
+├── CMakeLists.txt          CMake build  cross-platform
+├── Makefile                Quick build  Linux / macOS
 ├── build.bat               Windows build script (MSVC or MinGW)
 ├── build.sh                Linux / macOS build script (auto-installs compiler)
 ├── run.bat                 Windows launcher → C++ binary → Python fallback
@@ -329,7 +329,7 @@ NetworkChecker/
 <details>
 <summary><strong>Windows</strong></summary>
 
-- Requires **Administrator** — `run.bat` triggers a UAC prompt automatically
+- Requires **Administrator** `run.bat` triggers a UAC prompt automatically
 - ANSI colors work on Windows 10 1903+, Windows 11, and Windows Terminal
 - Gateway detection uses `GetIpForwardTable` (Win32 API, no subprocess)
 - DNS fix uses PowerShell's `Set-DnsClientServerAddress` to update all active adapters at once
@@ -350,7 +350,7 @@ NetworkChecker/
 <summary><strong>Linux</strong></summary>
 
 - Requires `sudo` or root for auto-fix
-- Gateway read from `/proc/net/route` directly — zero subprocesses, instant
+- Gateway read from `/proc/net/route` directly  zero subprocesses, instant
 - DNS from `resolvectl` (systemd-resolved) with `/etc/resolv.conf` as fallback
 - Interface name from `ip route show default`
 
@@ -387,7 +387,7 @@ The launchers (`run.sh` / `run.bat`) fall back to this automatically if no compi
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for full terms.
+MIT see [LICENSE](LICENSE) for full terms.
 
 © 2026 VortexDQ Corporation
 
@@ -395,6 +395,6 @@ MIT — see [LICENSE](LICENSE) for full terms.
 
 <div align="center">
 
-*Network Checker — Know what is broken. Know how to fix it.*
+*Network Checker  Know what is broken. Know how to fix it.*
 <!-- WATERMARK: VDQ-NC-3.0 | VortexDQ Corporation | github.com/VortexDQ/Network-Checker -->
 </div>
