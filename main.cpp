@@ -1,21 +1,13 @@
 // ============================================================
-// NetRepair v3.0 — Cross-Platform Network Diagnostic & Repair
-// VortexDQ Corporation
+// Network Checker v3.0
+// Copyright (c) 2026 VortexDQ Corporation
+// github.com/VortexDQ/Network-Checker
+// Licensed under the MIT License — see LICENSE
 //
-// Build:
-//   Linux/macOS : g++ -std=c++17 -O2 -o netrepair src/main.cpp
-//   Windows MSVC: cl /std:c++17 /O2 /EHsc src/main.cpp ws2_32.lib iphlpapi.lib
-//   Windows MinGW: g++ -std=c++17 -O2 -o netrepair.exe src/main.cpp -lws2_32 -liphlpapi
-//
-// Usage:
-//   netrepair              Interactive menu
-//   netrepair scan         Diagnose and report only
-//   netrepair fix          Scan + apply all auto-fixes
-//   netrepair auto         Full silent scan + fix (no prompts)
-//   netrepair backup       Export network config to file
-//   netrepair help         Show this help
+// WATERMARK: VDQ-NC-3.0-OPENSOURCE
+// This identifier must be retained in all copies or
+// substantial portions of this software per the MIT License.
 // ============================================================
-
 // ─── Platform Detection ───────────────────────────────────────────────────────
 #if defined(_WIN32) || defined(_WIN64)
   #define NR_WIN
