@@ -1,0 +1,34 @@
+# Compiled binaries
+netcheck
+netcheck.exe
+netrepair
+netrepair.exe
+*.obj
+*.pdb
+*.ilk
+
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# Runtime logs and backups
+netcheck_*.log
+netrepair_*.log
+netconfig_*.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# VS Code / JetBrains
+.vscode/
+.idea/

@@ -1,10 +1,10 @@
 // ============================================================
-// Network Checker v3.0
+// Network Checker v3.1.0
 // Copyright (c) 2026 VortexDQ Corporation
 // github.com/VortexDQ/Network-Checker
 // Licensed under the MIT License — see LICENSE
 //
-// WATERMARK: VDQ-NC-3.0-OPENSOURCE
+// WATERMARK: VDQ-NC-3.1-OPENSOURCE
 // This identifier must be retained in all copies or
 // substantial portions of this software per the MIT License.
 // ============================================================
@@ -102,7 +102,7 @@ void nlog(const std::string& msg) {
 void save_log() {
     std::ofstream f(g_log_file);
     if (!f) return;
-    f << "NetRepair v3.0 — VortexDQ Corporation\n"
+    f << "Network Checker v3.1.0 — VortexDQ Corporation\n"
       << "OS: " << OS_LABEL << "\n"
       << "Run: " << now_str("%Y-%m-%d %H:%M:%S") << "\n"
       << std::string(54, '=') << "\n\n";
@@ -776,7 +776,7 @@ void auto_fix(const std::vector<Issue>& issues) {
 #ifdef NR_WIN
         std::cout << "      Right-click -> Run as administrator.\n";
 #else
-        std::cout << "      Run: sudo netrepair fix\n";
+        std::cout << "      Run: sudo netcheck fix\n";
 #endif
         return;
     }
@@ -843,15 +843,15 @@ void backup() {
 // ─── Help ─────────────────────────────────────────────────────────────────────
 void print_help() {
     std::cout << "\n"
-              << Col::CY << "  NetRepair v3.0  —  VortexDQ Corporation\n" << Col::X
+              << Col::CY << "  Network Checker v3.1.0 — VortexDQ Corporation\n" << Col::X
               << "  Platforms: Windows  Linux  macOS\n\n"
               << Col::B << "  Usage:\n" << Col::X
-              << "    netrepair              Interactive menu\n"
-              << "    netrepair scan         Diagnose and show report\n"
-              << "    netrepair fix          Scan then apply auto-fixes (prompts)\n"
-              << "    netrepair auto         Full silent scan + fix (no prompts)\n"
-              << "    netrepair backup       Export current network config\n"
-              << "    netrepair help         Show this help\n\n"
+              << "    netcheck               Interactive menu\n"
+              << "    netcheck scan          Diagnose and show report\n"
+              << "    netcheck fix          Scan then apply auto-fixes (prompts)\n"
+              << "    netcheck auto          Full silent scan + fix (no prompts)\n"
+              << "    netcheck backup        Export current network config\n"
+              << "    netcheck help         Show this help\n\n"
               << Col::B << "  Exit codes:\n" << Col::X
               << "    0  Healthy (or fixes applied)\n"
               << "    1  Issues found, no fix attempted\n"
@@ -864,7 +864,7 @@ void print_menu() {
         ? Col::G + "Admin/Root" + Col::X
         : Col::Y + "User (limited)" + Col::X;
     std::cout << "\n" << Col::CY << std::string(54, '=') << "\n"
-              << "  NetRepair v3.0  .  VortexDQ Corporation\n"
+              << "  Network Checker v3.1.0 — VortexDQ Corporation\n"
               << "  OS: " << OS_LABEL << "   Privileges: " << priv << Col::CY << "\n"
               << std::string(54, '=') << Col::X << "\n\n"
               << "  " << Col::B << "1" << Col::X << "   Scan          Diagnose and report issues\n"
@@ -883,7 +883,7 @@ void wait_enter() {
 int main(int argc, char* argv[]) {
     enable_ansi();
     sock_init();
-    g_log_file = "netrepair_" + now_str("%Y%m%d_%H%M%S") + ".log";
+    g_log_file = "netcheck_" + now_str("%Y%m%d_%H%M%S") + ".log";
 
     if (argc >= 2) {
         std::string cmd = argv[1];
@@ -898,7 +898,7 @@ int main(int argc, char* argv[]) {
             bool quiet  = (cmd == "auto");
             if (!quiet)
                 std::cout << "\n" << Col::CY
-                          << "  NetRepair v3.0  —  VortexDQ Corporation" << Col::X << "\n";
+                          << "  Network Checker v3.1.0 — VortexDQ Corporation" << Col::X << "\n";
             NetState s = run_diagnostics(quiet);
             auto issues = analyze(s);
             print_report(s, issues);
@@ -950,7 +950,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "\n  " << Col::R << "[!]" << Col::X
                           << " Requires admin/root.\n";
 #ifndef NR_WIN
-                std::cout << "      sudo netrepair fix\n";
+                std::cout << "      sudo netcheck fix\n";
 #endif
                 wait_enter(); continue;
             }

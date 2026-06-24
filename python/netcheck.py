@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-NetRepair v3.0  —  Cross-Platform Network Diagnostic & Repair
+Network Checker v3.1.0 — Cross-Platform Network Diagnostic & Repair
 VortexDQ Corporation
 Platforms: Windows · Linux · macOS
 
 Usage:
-  python3 netrepair.py          Interactive menu
-  python3 netrepair.py --auto   Full scan + auto-fix, no prompts
-  python3 netrepair.py --scan   Scan only, no fixes
+  python3 netcheck.py          Interactive menu
+  python3 netcheck.py --auto   Full scan + auto-fix, no prompts
+  python3 netcheck.py --scan   Scan only, no fixes
 """
 
 import os, sys, platform, subprocess, socket, time, re
@@ -48,14 +48,14 @@ SEV_COL = {"critical": R, "high": Y, "warning": Y, "info": CY}
 #  LOGGING
 # ═══════════════════════════════════════════════════════
 _LOG: list[str] = []
-LOG_FILE = f"netrepair_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+LOG_FILE = f"netcheck_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
 
 def log(msg: str):
     _LOG.append(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 
 def save_log():
     with open(LOG_FILE, "w", encoding="utf-8") as f:
-        f.write(f"NetRepair v3.0 — VortexDQ Corporation\n")
+        f.write(f"Network Checker v3.1.0 — VortexDQ Corporation\n")
         f.write(f"OS: {platform.platform()}\n")
         f.write(f"Run: {datetime.now()}\n")
         f.write("═" * 54 + "\n\n")
@@ -676,7 +676,7 @@ def auto_fix(s: State, issues: list):
         if WIN:
             print("      Right-click → Run as administrator.")
         else:
-            print("      Run: sudo python3 netrepair.py")
+            print("      Run: sudo python3 netcheck.py")
         return
 
     fixed_any = False
@@ -768,7 +768,7 @@ def header():
     priv = f"{G}Admin/Root{X}" if is_root() else f"{Y}User (limited){X}"
     print(f"""
 {CY}{'═'*54}
-  NetRepair v3.0  ·  VortexDQ Corporation
+  Network Checker v3.1.0  ·  VortexDQ Corporation
   OS: {OS_LABEL:<10}  Privileges: {priv}{CY}
 {'═'*54}{X}
 
@@ -832,7 +832,7 @@ def main():
             if not is_root():
                 print(f"\n  {R}[!]{X} Requires admin/root. Run with elevated privileges.")
                 if not WIN:
-                    print("      sudo python3 netrepair.py")
+                    print("      sudo python3 netcheck.py")
                 input("\n  Enter to continue...")
                 continue
             s = run_diagnostics()
