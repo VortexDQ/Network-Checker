@@ -396,5 +396,5 @@ MIT — see [LICENSE](LICENSE) for full terms.
 <div align="center">
 
 *Network Checker — Know what is broken. Know how to fix it.*
-
+<!-- WATERMARK: VDQ-NC-3.0 | VortexDQ Corporation | github.com/VortexDQ/Network-Checker -->
 </div>
